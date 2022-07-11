@@ -1,5 +1,6 @@
 package com.springbootmongodb.SpringBootMongoDB.services;
 
+import com.springbootmongodb.SpringBootMongoDB.DTO.UserDTO;
 import com.springbootmongodb.SpringBootMongoDB.domain.User;
 import com.springbootmongodb.SpringBootMongoDB.repository.UserRepository;
 import com.springbootmongodb.SpringBootMongoDB.services.exception.ObjectNotFoundException;
@@ -23,4 +24,13 @@ public class UserService {
         Optional<User> obj = repo.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado !"));
     }
+
+    public User insert(User obj){
+        return repo.insert(obj);
+    }
+
+    public User fromDTO(UserDTO objDTO){
+        return new User(objDTO.getId(),objDTO.getName(),objDTO.getEmail());
+    }
+
 }
