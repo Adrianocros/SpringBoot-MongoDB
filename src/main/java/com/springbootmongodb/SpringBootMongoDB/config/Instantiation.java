@@ -15,8 +15,6 @@ public class Instantiation implements CommandLineRunner {
     @Autowired
     private UserRepository userRepository;
 
-
-
     //Instanciar os objetos e salvar no banco de dados
     @Override
     public void run(String... args) throws Exception {
@@ -29,7 +27,4 @@ public class Instantiation implements CommandLineRunner {
 
        userRepository.saveAll(Arrays.asList(maria,alex,joao));
     }
-
-
-
 }
