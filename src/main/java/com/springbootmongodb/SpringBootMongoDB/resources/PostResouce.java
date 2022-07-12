@@ -3,6 +3,7 @@ package com.springbootmongodb.SpringBootMongoDB.resources;
 import com.springbootmongodb.SpringBootMongoDB.DTO.UserDTO;
 import com.springbootmongodb.SpringBootMongoDB.domain.Post;
 import com.springbootmongodb.SpringBootMongoDB.domain.User;
+import com.springbootmongodb.SpringBootMongoDB.resources.util.URL;
 import com.springbootmongodb.SpringBootMongoDB.services.PostService;
 import com.springbootmongodb.SpringBootMongoDB.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,13 @@ public class PostResouce {
     public ResponseEntity<Post> findId(@PathVariable  String id){
         Post obj = postService.findById(id);
         return ResponseEntity.ok().body(obj);
+    }
+
+    @RequestMapping(value = "/titlesearch",method = RequestMethod.GET)
+    public ResponseEntity<List<Post>> findTitle(@RequestParam(value = "text",defaultValue = "")  String text){
+        text = URL.decodeParam(text);
+        List<Post> list = postService.findByTitle(text);
+        return ResponseEntity.ok().body(list);
     }
 
 }
