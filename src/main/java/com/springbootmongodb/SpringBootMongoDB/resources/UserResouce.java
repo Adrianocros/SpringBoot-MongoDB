@@ -1,6 +1,7 @@
 package com.springbootmongodb.SpringBootMongoDB.resources;
 
 import com.springbootmongodb.SpringBootMongoDB.DTO.UserDTO;
+import com.springbootmongodb.SpringBootMongoDB.domain.Post;
 import com.springbootmongodb.SpringBootMongoDB.domain.User;
 import com.springbootmongodb.SpringBootMongoDB.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,13 @@ public class UserResouce {
         obj.setId(id);
         obj = service.update(obj);
         return ResponseEntity.noContent().build();//retornar 204
+    }
+
+    //Carrega os posts do usuario
+    @RequestMapping(value = "/{id}/post",method = RequestMethod.GET)
+    public ResponseEntity<List<Post>> findPosts(@PathVariable  String id){
+        User obj = service.findById(id);
+        return ResponseEntity.ok().body(obj.getPosts());
     }
 
 
