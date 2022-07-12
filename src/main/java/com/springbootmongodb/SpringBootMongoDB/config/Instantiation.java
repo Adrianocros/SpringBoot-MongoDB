@@ -1,5 +1,6 @@
 package com.springbootmongodb.SpringBootMongoDB.config;
 
+import com.springbootmongodb.SpringBootMongoDB.DTO.AuthoDTO;
 import com.springbootmongodb.SpringBootMongoDB.domain.Post;
 import com.springbootmongodb.SpringBootMongoDB.domain.User;
 import com.springbootmongodb.SpringBootMongoDB.repository.PostRepository;
@@ -36,12 +37,12 @@ public class Instantiation implements CommandLineRunner {
         User alex = new User(null,"Joao Silva","joao@silva.com");
         User joao = new User(null,"Ricarso Silva","joao@silva.com");
 
+        userRepository.saveAll(Arrays.asList(maria,alex,joao));
 
-        Post post1 = new Post(null,sdf.parse("21/03/2018"),"Partiu viagem!","Vou viajar para São Paulo !",maria);
-        Post post2 = new Post(null,sdf.parse("13/06/2021"),"Bom dia","Acordei feliz !",alex);
+        Post post1 = new Post(null,sdf.parse("21/03/2018"),"Partiu viagem!","Vou viajar para São Paulo !",new AuthoDTO(maria));
+        Post post2 = new Post(null,sdf.parse("13/06/2021"),"Bom dia","Acordei feliz !",new AuthoDTO(alex));
 
-       userRepository.saveAll(Arrays.asList(maria,alex,joao));
-       postRepository.saveAll(Arrays.asList(post1,post2));
+        postRepository.saveAll(Arrays.asList(post1,post2));
 
     }
 }

@@ -1,5 +1,6 @@
 package com.springbootmongodb.SpringBootMongoDB.domain;
 
+import com.springbootmongodb.SpringBootMongoDB.DTO.AuthoDTO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -16,11 +17,11 @@ public class Post  implements Serializable {
     private Date data;
     private String title;
     private String body;
-    private  User author;
+    private AuthoDTO author;
 
     public Post(){}
 
-    public Post(String id, Date data, String title, String body, User author) {
+    public Post(String id, Date data, String title, String body, AuthoDTO author) {
         this.id = id;
         this.data = data;
         this.title = title;
@@ -60,11 +61,11 @@ public class Post  implements Serializable {
         this.body = body;
     }
 
-    public User getAuthor() {
+    public AuthoDTO getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public void setAuthor(AuthoDTO author) {
         this.author = author;
     }
 
