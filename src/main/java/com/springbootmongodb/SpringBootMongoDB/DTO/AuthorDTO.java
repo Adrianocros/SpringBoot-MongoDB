@@ -4,15 +4,15 @@ import com.springbootmongodb.SpringBootMongoDB.domain.User;
 
 import java.io.Serializable;
 
-public class AuthoDTO implements Serializable {
+public class AuthorDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String id;
     private String name;
 
-    public AuthoDTO(){}
+    public AuthorDTO(){}
 
-    public AuthoDTO(User obj){
+    public AuthorDTO(User obj){
         id = obj.getId();
         name = obj.getName();
     }

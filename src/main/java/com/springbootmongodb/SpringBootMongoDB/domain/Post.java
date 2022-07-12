@@ -1,11 +1,14 @@
 package com.springbootmongodb.SpringBootMongoDB.domain;
 
-import com.springbootmongodb.SpringBootMongoDB.DTO.AuthoDTO;
+import com.springbootmongodb.SpringBootMongoDB.DTO.AuthorDTO;
+import com.springbootmongodb.SpringBootMongoDB.DTO.CommentDTO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Document
@@ -17,11 +20,12 @@ public class Post  implements Serializable {
     private Date data;
     private String title;
     private String body;
-    private AuthoDTO author;
+    private AuthorDTO author;
+    private List<CommentDTO> comments = new ArrayList<>();
 
     public Post(){}
 
-    public Post(String id, Date data, String title, String body, AuthoDTO author) {
+    public Post(String id, Date data, String title, String body, AuthorDTO author) {
         this.id = id;
         this.data = data;
         this.title = title;
@@ -61,12 +65,20 @@ public class Post  implements Serializable {
         this.body = body;
     }
 
-    public AuthoDTO getAuthor() {
+    public AuthorDTO getAuthor() {
         return author;
     }
 
-    public void setAuthor(AuthoDTO author) {
+    public void setAuthor(AuthorDTO author) {
         this.author = author;
+    }
+
+    public List<CommentDTO> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentDTO> comments) {
+        this.comments = comments;
     }
 
     @Override
